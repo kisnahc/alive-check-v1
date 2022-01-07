@@ -26,7 +26,7 @@ class AliveSchedulerImplTest {
 
     @Test
     public void alive_scheduler_run_test() {
-        aliveScheduler.run(hostList, 1, 3, 5, TimeUnit.SECONDS);
+        aliveScheduler.run(hostList, 1, 3000, 5000);
     }
 
     @Test

@@ -18,7 +18,7 @@ public class AliveSchedulerImplV1 implements AliveSchedulerV1 {
     }
 
     @Override
-    public void run(List<HostInfo> hostList, int initialDelay, int delay, int nThreads, TimeUnit timeUnit) {
+    public void run(List<HostInfo> hostList, int initialDelay, int delay, int nThreads) {
 
         Runnable task = () -> {
             for (HostInfo hostInfo : hostList) {
@@ -28,7 +28,7 @@ public class AliveSchedulerImplV1 implements AliveSchedulerV1 {
         };
 
         ScheduledThreadPoolExecutor se = new ScheduledThreadPoolExecutor(nThreads);
-        se.scheduleWithFixedDelay(task, initialDelay, delay, timeUnit);
+        se.scheduleWithFixedDelay(task, initialDelay, delay, TimeUnit.MILLISECONDS);
         callback.getAll(hostList);
     }
 
